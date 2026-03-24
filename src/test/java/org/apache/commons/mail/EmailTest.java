@@ -34,5 +34,7 @@ public class EmailTest {
 		email.addBcc(TEST_EMAILS);
 		
 		assertEquals(3, email.getBccAddresses().size());
+		
+		email.addBcc(); // invalid address list should throw exception
 	}
 }
