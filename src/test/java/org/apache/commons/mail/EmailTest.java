@@ -37,4 +37,28 @@ public class EmailTest {
 		
 		email.addBcc(); // invalid address list should throw exception
 	}
+	
+	/*
+	 * Test addCc(String email) function
+	 */
+	@Test
+	public void testAddCc() throws Exception {
+		// TODO email.addCc(...);
+	}
+	
+//	void     addHeader(String name, String value)
+//
+//	Email   addReplyTo(String email, String name)
+//
+//	void     buildMimeMessage()
+//
+//	String  getHostName()
+//
+//	Session getMailSession()
+//
+//	Date    getSentDate()
+//
+//	int        getSocketConnectionTimeout()
+//
+//	Email   setFrom(String email)
 }
