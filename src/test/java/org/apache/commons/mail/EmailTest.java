@@ -79,11 +79,11 @@ public class EmailTest {
 	 */
 	@Test
 	public void testGetHostName() throws Exception {
-		email.getHostName();
+		assertEquals(null, email.getHostName());
 		
 		email.setHostName("Host");
 		
-		email.getHostName();
+		assertEquals("Host", email.getHostName());
 	}
 	
 	/*
@@ -104,15 +104,25 @@ public class EmailTest {
 	 */
 	@Test
 	public void testGetSentDate() throws Exception {
-		email.getSentDate();
+		//email.getSentDate();
+		assertEquals(new Date(), email.getSentDate());
 		
-		Date currentDate = new Date();
-		email.setSentDate(currentDate);
+		Date specificDate = new Date(2005 - 1900, 9, 31);
+		email.setSentDate(specificDate);
 		
-		email.getSentDate();
+		assertEquals(specificDate, email.getSentDate());
 	}
 	
-//	Date    getSentDate()
+	/*
+	 * Test getSocketConnectionTimeout() function
+	 */
+	@Test
+	public void testGetSocketConnectionTimeout() throws Exception {
+		email.getSocketConnectionTimeout();
+		
+		
+	}
+	
 //
 //	int        getSocketConnectionTimeout()
 //
