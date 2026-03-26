@@ -58,6 +58,16 @@ public class EmailTest {
 		email.addHeader("My Name", "");
 	}
 	
+	/*
+	 * Test addReplyTo(String email, String name) function
+	 */
+	@Test
+	public void testAddReplyTo() throws Exception {
+		email.addReplyTo("fakeemail@domain.net", "Fake Name");
+		
+		assertEquals(1, email.getReplyToAddresses().size());
+	}
+	
 //
 //	Email   addReplyTo(String email, String name)
 //
