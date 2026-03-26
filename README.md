@@ -2,3 +2,4 @@
 (Description)
 ## Sources
 - Using java.utils.Date: https://www.javaspring.net/blog/how-create-date-object-with-values-in-java/
+- Getting email as String from InternetAddress object: https://docs.oracle.com/javaee/7/api/javax/mail/internet/InternetAddress.html
