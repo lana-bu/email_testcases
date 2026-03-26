@@ -43,10 +43,21 @@ public class EmailTest {
 	 */
 	@Test
 	public void testAddCc() throws Exception {
-		// TODO email.addCc(...);
+		email.addCc("test.email@abc.com");
+		
+		assertEquals(1, email.getCcAddresses().size());
 	}
 	
-//	void     addHeader(String name, String value)
+	/*
+	 * Test addHeader(String name, String value) function
+	 */
+	@Test
+	public void testAddHeader() throws Exception {
+		email.addHeader("First Last", "My Header");
+		
+		email.addHeader("My Name", "");
+	}
+	
 //
 //	Email   addReplyTo(String email, String name)
 //
