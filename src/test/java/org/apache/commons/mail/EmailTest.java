@@ -118,9 +118,7 @@ public class EmailTest {
 	 */
 	@Test
 	public void testGetSocketConnectionTimeout() throws Exception {
-		email.getSocketConnectionTimeout();
-		
-		
+		assertEquals(60000, email.getSocketConnectionTimeout()); // value of SOCKET_TIMEOUT_MS in EmailConstants
 	}
 	
 //
