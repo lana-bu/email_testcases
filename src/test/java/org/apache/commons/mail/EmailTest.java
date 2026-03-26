@@ -2,6 +2,8 @@ package org.apache.commons.mail;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -84,10 +86,32 @@ public class EmailTest {
 		email.getHostName();
 	}
 	
-//	String  getHostName()
+	/*
+	 * Test getMailSession() function
+	 */
+	@Test
+	public void testGetMailSession() throws Exception {
+		email.getMailSession();
+		
+	}
+	
 //
 //	Session getMailSession()
 //
+	
+	/*
+	 * Test getSentDate() function
+	 */
+	@Test
+	public void testGetSentDate() throws Exception {
+		email.getSentDate();
+		
+		Date currentDate = new Date();
+		email.setSentDate(currentDate);
+		
+		email.getSentDate();
+	}
+	
 //	Date    getSentDate()
 //
 //	int        getSocketConnectionTimeout()
