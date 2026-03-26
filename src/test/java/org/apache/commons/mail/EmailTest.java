@@ -69,10 +69,21 @@ public class EmailTest {
 	}
 	
 //
-//	Email   addReplyTo(String email, String name)
-//
 //	void     buildMimeMessage()
 //
+	
+	/*
+	 * Test getHostName() function
+	 */
+	@Test
+	public void testGetHostName() throws Exception {
+		email.getHostName();
+		
+		email.setHostName("Host");
+		
+		email.getHostName();
+	}
+	
 //	String  getHostName()
 //
 //	Session getMailSession()
