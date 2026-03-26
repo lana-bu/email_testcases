@@ -121,8 +121,17 @@ public class EmailTest {
 		assertEquals(60000, email.getSocketConnectionTimeout()); // value of SOCKET_TIMEOUT_MS in EmailConstants
 	}
 	
+	/*
+	 * Test setFrom(String email)) function
+	 */
+	@Test
+	public void testSetFrom() throws Exception {
+		email.setFrom("testing.email@notreal.org");
+		
+		assertEquals("testing.email@notreal.org", email.getFromAddress().getAddress());
+	}
+	
 //
-//	int        getSocketConnectionTimeout()
 //
 //	Email   setFrom(String email)
 }
