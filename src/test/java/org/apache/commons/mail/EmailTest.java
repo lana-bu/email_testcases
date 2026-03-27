@@ -3,6 +3,7 @@ package org.apache.commons.mail;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
+import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
@@ -91,20 +92,17 @@ public class EmailTest {
 	 */
 	@Test
 	public void testGetMailSession() throws Exception {
-		email.getMailSession();
+		email.setSSLOnConnect(true);
+		email.setHostName("Host");
 		
+		assertEquals("Host", email.getMailSession().getProperties().getProperty("mail.smtp.host")); // value of MAIL_HOST in EmailConstants
 	}
-	
-//
-//	Session getMailSession()
-//
 	
 	/*
 	 * Test getSentDate() function
 	 */
 	@Test
 	public void testGetSentDate() throws Exception {
-		//email.getSentDate();
 		assertEquals(new Date(), email.getSentDate());
 		
 		Date specificDate = new Date(2005 - 1900, 9, 31);
@@ -122,16 +120,13 @@ public class EmailTest {
 	}
 	
 	/*
-	 * Test setFrom(String email)) function
+	 * Test setFrom(String email) function
 	 */
 	@Test
 	public void testSetFrom() throws Exception {
 		email.setFrom("testing.email@notreal.org");
 		
-		assertEquals("testing.email@notreal.org", email.getFromAddress().getAddress());
+		assertEquals("testing.email@notreal.org", email.getFromAddress().getAddress()); // getAddress gets email as String from InternetAddress object returned by getFromAddress
 	}
-	
-//
-//
-//	Email   setFrom(String email)
+
 }
