@@ -13,9 +13,6 @@ public class EmailTest {
 	private static final String[] TEST_EMAILS = { "ab@bc.com", "a.b@c.org", 
 			"abcdefghijklmnopqrst@abcdefghijklmnopqrst.com.bd" };
 	
-//	private String[] testValidChars = { "", "a", "A", "\uc5ec", "0123456789", 
-//			"012345678901234567890", "\n" };
-	
 	private EmailStub email;
 	
 	@Before
@@ -57,7 +54,7 @@ public class EmailTest {
 	public void testAddHeader() throws Exception {
 		email.addHeader("First Last", "My Header");
 		
-		email.addHeader("My Name", "");
+		email.addHeader("My Name", ""); // throws exception for empty value
 	}
 	
 	/*
@@ -88,7 +85,6 @@ public class EmailTest {
 		email.addBcc("jane.doe@fakeemail.net");
 		email.addReplyTo("personal@emailme.com");
 		email.addHeader("Mister Mango", "Professional Email Sender");
-		//email.setPopBeforeSmtp(true, "smtp.ethereal.email", "testUsername", "testPassword");
 		Object contentObject = new Object();
 		email.setContent(contentObject, "business email");
 		
