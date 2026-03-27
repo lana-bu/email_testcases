@@ -3,7 +3,6 @@ package org.apache.commons.mail;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
-import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
@@ -71,9 +70,19 @@ public class EmailTest {
 		assertEquals(1, email.getReplyToAddresses().size());
 	}
 	
-//
-//	void     buildMimeMessage()
-//
+	/*
+	 * Test buildMimeMessage() function
+	 */
+	@Test
+	public void buildMimeMessage() throws Exception {
+		email.setHostName("Host"); // valid hostname required
+		email.setBounceAddress("bounce@email.com"); // From address required
+		email.addTo("recipient.email@domain.org");// receiver address(es) required
+		
+		email.buildMimeMessage();
+		
+		assertEquals("TestSubject", email.getMimeMessage().getSubject());
+	}
 	
 	/*
 	 * Test getHostName() function
