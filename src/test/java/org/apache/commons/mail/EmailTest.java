@@ -74,14 +74,37 @@ public class EmailTest {
 	 * Test buildMimeMessage() function
 	 */
 	@Test
-	public void buildMimeMessage() throws Exception {
+	public void testBuildMimeMessageValid() throws Exception { // successfully builds a mime message
+		// required to build a mime message
 		email.setHostName("Host"); // valid hostname required
 		email.setBounceAddress("bounce@email.com"); // From address required
 		email.addTo("recipient.email@domain.org");// receiver address(es) required
 		
+		// optional add-ons (for more coverage)
+		email.setFrom("professional789@random.org");
+		email.setSubject("TestSubject");
+		email.setCharset("utf-8");
+		email.addCc(TEST_EMAILS);
+		email.addBcc("jane.doe@fakeemail.net");
+		email.addReplyTo("personal@emailme.com");
+		email.addHeader("Mister Mango", "Professional Email Sender");
+		//email.setPopBeforeSmtp(true, "smtp.ethereal.email", "testUsername", "testPassword");
+		Object contentObject = new Object();
+		email.setContent(contentObject, "business email");
+		
 		email.buildMimeMessage();
 		
 		assertEquals("TestSubject", email.getMimeMessage().getSubject());
+		
+		email.buildMimeMessage();
+	}
+	
+	@Test
+	public void testBuildMimeMessageInvalid() throws Exception { // throws exception before building mime message
+		email.setHostName("Host");
+		// no bounce address or to address set, so exception gets thrown
+		
+		email.buildMimeMessage();
 	}
 	
 	/*
