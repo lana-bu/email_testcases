@@ -6,7 +6,9 @@ import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class EmailTest {
 	
@@ -14,6 +16,9 @@ public class EmailTest {
 			"abcdefghijklmnopqrst@abcdefghijklmnopqrst.com.bd" };
 	
 	private EmailStub email;
+	
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 	
 	@Before
 	public void setUpEmailTest() throws Exception {
@@ -34,6 +39,7 @@ public class EmailTest {
 		
 		assertEquals(3, email.getBccAddresses().size());
 		
+		exception.expect(EmailException.class); // expects the exception, so test case will not fail
 		email.addBcc(); // invalid address list should throw exception
 	}
 	
@@ -54,6 +60,7 @@ public class EmailTest {
 	public void testAddHeader() throws Exception {
 		email.addHeader("First Last", "My Header");
 		
+		exception.expect(IllegalArgumentException.class);
 		email.addHeader("My Name", ""); // throws exception for empty value
 	}
 	
@@ -92,6 +99,7 @@ public class EmailTest {
 		
 		assertEquals("TestSubject", email.getMimeMessage().getSubject());
 		
+		exception.expect(IllegalStateException.class);
 		email.buildMimeMessage();
 	}
 	
@@ -100,6 +108,7 @@ public class EmailTest {
 		email.setHostName("Host");
 		// no bounce address or to address set, so exception gets thrown
 		
+		exception.expect(EmailException.class);
 		email.buildMimeMessage();
 	}
 	
